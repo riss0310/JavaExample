@@ -1,7 +1,7 @@
 package Exe;
 
 import java.util.Scanner;
-
+import Admin.AdminService;
 import Student.StudentService;
 import lecture.LectureService;
 
@@ -9,6 +9,8 @@ public class LectureApp {
 	Scanner sc = new Scanner(System.in);
 	StudentService ss = new StudentService();
 	LectureService ls = new LectureService();
+	AdminService as = new AdminService();
+			
 	
 	private void lecturerun() {
 		boolean flag = true;
@@ -17,7 +19,7 @@ public class LectureApp {
 		String selectNo = sc.nextLine();
 		switch(selectNo) {
 		case "1":
-			ss.login();
+			ss.studentLogin();
 			break;
 		case "2":
 			
@@ -49,12 +51,6 @@ public class LectureApp {
 	}
 
 	private void menu() {
-		System.out.println(" 1.로그인 | 2.로그아웃 | 3.회원가입 | 4.수강신청 | 5.회원 정보 조회 | 6.회원 정보 수정 | 7.종료");
-		
-	}
-	
-	
-	
-	
-	
+		System.out.println(" 1.로그인 | 2.로그아웃 | 3.회원가입 | 4.수강신청 | 5.회원 정보 조회 | 6.회원 정보 수정 | 7.종료");		
+	}	
 }

@@ -1,8 +1,11 @@
 package lecture;
 
 
+import Student.StudentDAO;
 import Student.StudentService;
+
 import common.DAO;
+
 
 public class LectureDAO extends DAO{
 	private static LectureDAO lectureDao = null;
@@ -11,18 +14,24 @@ public class LectureDAO extends DAO{
 	private LectureDAO() {
 		
 	}
+	public static LectureDAO getInstance() {
+		if(lectureDao == null) {
+			lectureDao = new LectureDAO();
+		}
+		return lectureDao;
+	}
+	
 	//수강신청
 	public int addLecture(String lectureName) {
 		
 		int result = 0;
 		try {
 			conn();
-			String sql = "insert into lecture_permission values( ? , 'N') where student_id = ?";
+			String sql = "INSERT INTO lecture_permission(lecture_name,lecture_permission,student_id)VALUES(?,'N',?)";
 					
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, lectureName);
 			pstmt.setString(2, StudentService.studentInfo.getStudentId());
-			
 			
 			result = pstmt.executeUpdate();
 			
@@ -32,10 +41,9 @@ public class LectureDAO extends DAO{
 			disconn();
 		}
 		return result;
-		
 	}
-	
 
+	
 	//강의 관리
 	//강의 등록
 	public int insertLecture(Lecture lec) {
@@ -67,11 +75,7 @@ public class LectureDAO extends DAO{
 //		return lectureDao;
 //	}
 
-
-	
-	
 	//강의 삭제 기능
-
 	public int deleteLecture(Lecture lecture) {
 		int result = 0;
 		try {
@@ -89,56 +93,12 @@ public class LectureDAO extends DAO{
 		}
 		return result;
 	}
+
+
 	
-	//수강신청 승인
-public int adminLecture(String lectureName) {
 	
-	int result = 0;
-	try {
-		conn();
-		String sql = "insert into lecture_permission values( ? , 'y')";
-				
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, lectureName);
-		
-		
-		result = pstmt.executeUpdate();
-		
-	}catch(Exception e) {
-		e.printStackTrace();
-	}finally {
-		disconn();
-	}
-	return result;
+
 }
-	
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 

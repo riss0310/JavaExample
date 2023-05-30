@@ -2,6 +2,9 @@ package lecture;
 
 import java.util.Scanner;
 
+import Student.StudentDAO;
+
+
 public class LectureService {
 
 	public static Lecture lectureInfo = null;
@@ -10,33 +13,26 @@ public class LectureService {
 		
 	}
 	
+
 	//수강생 수강신청
 	public void addLecture() {
-		
 		System.out.println("수강신청 할 과목입력>");
 		String lectureName = sc.nextLine();
-		
 		int result = LectureDAO.getInstance().addLecture(lectureName);
 		if(result>0) {
 			System.out.println("수강신청 성공");
 		}else {
 			System.out.println("수강신청 실패");
-		}
-		
-		
-		
-		
-		
+		}	
 	}
 	
 
 	//강의 관리
 		//강의 등록
-	
 	public void insertLecture() {
 		Lecture lecture = new Lecture();
 		
-		System.out.println("✨강 의 등 록✨");
+		System.out.println("강 의 등 록");
 		
 		System.out.println("LECTURE ID>");
 		lecture.setLectureId(sc.nextLine());
@@ -52,7 +48,7 @@ public class LectureService {
 	
 		int result = LectureDAO.getInstance().insertLecture(lecture);
 		if(result>0) {
-			System.out.println("✨ 등 록 성 공 ✨");
+			System.out.println("등 록 성 공");
 		}else {
 			System.out.println("실패했습니다..");
 		}
@@ -71,27 +67,10 @@ public class LectureService {
 			System.out.println("DELETED!");
 		}else {
 			System.out.println("FAILD");
-		}
-				
-		
-		
-		
+		}	
 	}
 	
 	
-	
-	
 	//수강신청 승인
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
