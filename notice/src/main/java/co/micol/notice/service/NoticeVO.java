@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class NoticeVO {
 	private int noticeId;
 	private String noticeWriter;
@@ -15,3 +16,4 @@ public class NoticeVO {
 	private Date noticeWdate;
 	private int noticeHit;
 }
+

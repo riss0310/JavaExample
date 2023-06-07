@@ -12,7 +12,7 @@ import co.micol.notice.member.service.MemberVO;
 public class MemberServiceImpl implements MemberService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private MemberMapper map = sqlSession.getMapper(MemberMapper.class);
-	
+
 	@Override
 	public List<MemberVO> memberSelectList() {
 		// TODO Auto-generated method stub
@@ -41,6 +41,12 @@ public class MemberServiceImpl implements MemberService {
 	public int memberDelete(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return map.memberDelete(vo);
+	}
+
+	@Override
+	public MemberVO memberLogin(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return map.memberLogin(vo);
 	}
 
 }
